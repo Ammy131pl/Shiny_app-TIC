@@ -13,7 +13,7 @@ suppressMessages(suppressWarnings(library(kableExtra)))
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(reactable)))
 suppressMessages(suppressWarnings(library(shinyvalidate)))
-
+Sys.setlocale("LC_ALL", "en_US")
 options(scipen = 999)
 
 
