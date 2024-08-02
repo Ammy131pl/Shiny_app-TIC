@@ -12,7 +12,7 @@ suppressMessages(suppressWarnings(library(DT)))
 suppressMessages(suppressWarnings(library(kableExtra)))
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(scales)))
-
+Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
 # Salarios Básicos Unificados Ecuador ---
 crec_SBU <- 2.5339/100;
 sbu <- data.frame(anio = seq(1995, 2070, by=1),

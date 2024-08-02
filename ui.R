@@ -30,8 +30,9 @@ ui <- fluidPage(
     column(6, align = "center",
            h4("Escuela Politécnica Nacional - Trabajo de Integración Curricular"),
            h6("Evaluación de las propuestas de Reforma al Sistema de Pensiones Ecuatoriano"),
+           h6("Cotización sobre el décimo tercer y cuarto sueldo."),
            h6("Profesor: Diego Paúl Huaraca Shagñay"),
-           h6("Estudiantes: Andrea Barahona, Tayna Ruiz, Ammy Párraga")
+           h6("Estudiante: Ammy Párraga")
     ),
     column(3, img(src = "logo_fc.png", height = "100px"))
   ),
@@ -56,7 +57,7 @@ ui <- fluidPage(
       column(10, 
              tabsetPanel(
                tabPanel(
-                 "Sistema Actual",
+                 "Sistema Actual:",
                  fluidRow(
                    infoBoxOutput("ahorro", width = 4),
                    infoBoxOutput("pension_teorica_actual", width = 4),
@@ -88,46 +89,46 @@ ui <- fluidPage(
                ),
                
                
-               tabPanel(
-                 "Reforma Andrea Barahona",
-                 fluidPage(
-                   h4("Reforma: Cálculo en la fórmula de cálculo de la pensión por vejez"),
-                   p("Según el Art 199 del Cap. 6 del Anteproyecto de Ley, a partir de la fecha de publicación de la Ley de Pensiones y Ahorro para la 
-                     Vejez que reforma la presente Ley de Seguridad Social, la cuantía para el cálculo de la pensión de jubilación 
-                     se basará en el promedio mensual de los seis mejores años de ingresos que el afiliado haya aportado, y se incrementará gradualmente
-                     a razón de un año por cada año posterior a la reforma hasta alzcanzar un promedio mensual de los 30 mejores años."),
-                   fluidRow(
-                     sliderInput("anios_calculo_pension", "Número de años considerados para el cálculo de la pensión (años):", value = 8, max = 30, min = 5, width = "35%")
-                   ),
-                   fluidRow(infoBoxOutput("tasa_reemplazo_reforma", width = 3),  
-                            infoBoxOutput("cobertura_reforma", width = 3),
-                            infoBoxOutput("pension_teorica_actual_reforma", width = 3),
-                            infoBoxOutput('VApension_reforma', width = 3)
-                   ),
-                   fluidRow(column(6,
-                                   #highchartOutput("evolucion_reservas_con_aporte_sin_reforma", height = "300px"),
-                                   highchartOutput("evolucion_reservas_con_aporte_con_reforma", height = "300px")
-                   ),
-                   column(6,
-                          highchartOutput("pension_vs_años_con_reforma", height = "300px")
-                   )
-                   ), 
-                   fluidRow(
-                     reactableOutput("tabla_pensiones_reformaABC")
-                   )
-                 )
-               ),
+               # tabPanel(
+               #   "Reforma Andrea Barahona",
+               #   fluidPage(
+               #     h4("Reforma: Cálculo en la fórmula de cálculo de la pensión por vejez"),
+               #     p("Según el Art 199 del Cap. 6 del Anteproyecto de Ley, a partir de la fecha de publicación de la Ley de Pensiones y Ahorro para la 
+               #       Vejez que reforma la presente Ley de Seguridad Social, la cuantía para el cálculo de la pensión de jubilación 
+               #       se basará en el promedio mensual de los seis mejores años de ingresos que el afiliado haya aportado, y se incrementará gradualmente
+               #       a razón de un año por cada año posterior a la reforma hasta alzcanzar un promedio mensual de los 30 mejores años."),
+               #     fluidRow(
+               #       sliderInput("anios_calculo_pension", "Número de años considerados para el cálculo de la pensión (años):", value = 8, max = 30, min = 5, width = "35%")
+               #     ),
+               #     fluidRow(infoBoxOutput("tasa_reemplazo_reforma", width = 3),  
+               #              infoBoxOutput("cobertura_reforma", width = 3),
+               #              infoBoxOutput("pension_teorica_actual_reforma", width = 3),
+               #              infoBoxOutput('VApension_reforma', width = 3)
+               #     ),
+               #     fluidRow(column(6,
+               #                     #highchartOutput("evolucion_reservas_con_aporte_sin_reforma", height = "300px"),
+               #                     highchartOutput("evolucion_reservas_con_aporte_con_reforma", height = "300px")
+               #     ),
+               #     column(6,
+               #            highchartOutput("pension_vs_años_con_reforma", height = "300px")
+               #     )
+               #     ), 
+               #     fluidRow(
+               #       reactableOutput("tabla_pensiones_reformaABC")
+               #     )
+               #   )
+               # ),
+               # 
+               # tabPanel(
+               #   "Análisis Tayna Ruiz",
+               #   fluidPage(
+               #     h3("Explicación Ley"),
+               #     p("Aquí puedes agregar más funcionalidades o información adicional.")
+               #   )
+               # ),
                
                tabPanel(
-                 "Análisis Tayna Ruiz",
-                 fluidPage(
-                   h3("Explicación Ley"),
-                   p("Aquí puedes agregar más funcionalidades o información adicional.")
-                 )
-               ),
-               
-               tabPanel(
-                 "Análisis Ammy Párraga",
+                 "Análisis de la Reforma:",
                  fluidPage(
                    h4("Reforma: Cotización sobre el décimo tercer y cuarto sueldo."),
                    p("El Artículo 182.- Recursos del Seguro de Pensiones, del Anteproyecto de Ley para la Reforma
@@ -144,9 +145,9 @@ ui <- fluidPage(
                      column(6,
                             highchartOutput("num_coti_chart", height = "300px",width = "400px"))
                    ),
-                   tabsetPanel(
-                     tabPanel(
-                       tags$strong("Escenario Real: Mayor Ahorro y Misma Pensión"),
+                   # tabsetPanel(
+                     # tabPanel(
+                       # tags$strong("Escenario Real: Mayor Ahorro y Misma Pensión"),
                        p(""),
                        p(HTML("Actualmente, el valor de la pensión depende únicamente
                               del número de años aportados y del promedio de los cinco
@@ -193,17 +194,17 @@ ui <- fluidPage(
                         reactableOutput("tabla_pensiones_01")
                       )
                      ),
-                     tabPanel(
-                       tags$strong("Escenario Alternativo: Mayor Ahorro y Propuesta de Nueva Pensión"),
-                       textOutput("pen1"),
-                       textOutput("pen2"),
-                       textOutput("pen3"),
+                     # tabPanel(
+                       # tags$strong("Escenario Alternativo: Mayor Ahorro y Propuesta de Nueva Pensión"),
+                       # textOutput("pen1"),
+                       # textOutput("pen2"),
+                       # textOutput("pen3"),
                        textOutput("pen4")
-                     )
+                     # )
                      
-                   )
+                   # )
                    
-                 )
+                 # )
                )
              )
       )
